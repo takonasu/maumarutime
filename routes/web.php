@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('top');
 });
 
+Route::get('/make', 'MainController@makeImage');
+
 Route::get('/sass', function () {
     return view('sass');
 });

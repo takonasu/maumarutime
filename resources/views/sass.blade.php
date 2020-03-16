@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1 class="text">Sassの勉強です</h1>
+    <img alt="文字表示" src="{{ asset('/img/sets/たいむ.png') }}">
 </body>
 </html>
