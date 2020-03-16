@@ -1,7 +1,17 @@
 <!-- トップページ -->
 
 @extends('frame')
-
+@section('ogp')
+<meta name="description" content="○○タイム　ロゴメーカー">
+<meta property="og:site_name" content="○○タイム　ロゴメーカー">
+<meta property="og:type" content="summary_large_image">
+<meta property="og:url" content="https://maumarutime.ga/make?words=ばじりすく">
+<meta property="og:title" content="バジリスクタイム　ロゴメーカー">
+<meta property="og:image" content="https://maumarutime.ga/make?words=ばじりすく">
+<meta property="og:description" content="○○タイム　ロゴメーカー">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@takonasu_piano">
+@endsection
 @section('content')
 
 <h1 class="title">バジリスクｗｗｗ<br>タイムｗｗ</h1>
@@ -43,7 +53,7 @@
         <h3>更新履歴</h3>
 
         <dl>
-            <dt>2020/03/xx</dt>
+            <dt>2020/03/17</dt>
             <dd>Laravelで作り直されました。が、画像生成のアルゴリズムは変わっていません。ソースコードが<a
                     href="https://github.com/takonasu/maumarutime">Githubに公開</a>されました。</dd>
 
