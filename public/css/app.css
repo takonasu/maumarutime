@@ -10882,11 +10882,3 @@ a.text-dark:focus {
   }
 }
 
-.text {
-  width: 100vw;
-  height: 100vh;
-  line-height: 100vh;
-  text-align: center;
-  color: blue;
-}
-

@@ -6,25 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>WEBデンモク</title>
+    <title>バジリスクタイムロゴジェネレーター</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
 </head>
-<style>
-body {
-    background-color: #f5f5f5;
-    min-height: 100vh;
-}
-</style>
-
 
 <body>
-
     <nav class="navbar" role="navigation" aria-label="main navigation">
 
         <div class="navbar-brand">
             <a class="navbar-item" href="/">
-                <p class="title is-5">バジリスクタイムロゴジェネレーター</p>
+                <p class="title is-5">○○タイムロゴメーカー</p>
             </a>
             <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                 data-target="navbarBasicExample">
@@ -52,18 +45,34 @@ body {
                 </div>
             </section>
         </div>
-
-        <footer class="footer">
-            <div class="content has-text-centered">
-                <p>
-                    <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is
-                    licensed
-                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-                    is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-                </p>
-            </div>
-        </footer>
     </main>
+    <footer>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-size="large"
+            data-url="https://maumarutime.ga/" data-text="バジリスクタイムロゴジェネレーターで遊んだよ！"
+            data-hashtags="バジリスクタイムロゴジェネレーター">Tweet</a>
+        <script>
+        ! function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id;
+                js.src = p + '://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }(document, 'script', 'twitter-wjs');
+        </script>
+        <div class="line-it-button" data-lang="ja" data-type="share-d" data-url="https://maumarutime.ga/"
+            style="display: none;"></div>
+        <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async"
+            defer="defer"></script>
+        <script type="text/javascript">
+        LineIt.loadButton();
+        </script>
+        <p>お問い合わせ：<a href="https://twitter.com/takonasu_piano">@takonasu_piano</a></p>
+        <div class="content has-text-centered">
+        </div>
+    </footer>
 </body>
 
 

@@ -1,0 +1,32 @@
+body {
+  background-image: url("/img/back.jpg");
+  background-size: cover;
+  min-height: 100vh;
+}
+
+body main {
+  width: 100vw;
+  max-width: 980px;
+  margin: auto;
+}
+
+body .navbar {
+  background-color: #be81f7;
+}
+
+body footer {
+  background-color: #be81f7;
+  width: 100vw;
+  padding: 1rem;
+}
+
+body .jumbotron {
+  width: 100%;
+  padding: 1rem;
+  -webkit-filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.6));
+          filter: drop-shadow(0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.6));
+  background: #be81f7;
+  margin: 2rem 0 1rem 0;
+  border-radius: 0.5rem;
+}
+
