@@ -8,7 +8,11 @@ class MainController extends Controller
 {
     //
     public function makeImage(Request $request){
-        $ext = $request -> ext;
+        $ext = $request -> words;
+
+        if($ext==null){
+            return redirect('/');
+        }
 
         //$matches配列にバラした文字を一つ一つ格納
         for ($i=0; $i<strlen($ext)/3; $i++) {
