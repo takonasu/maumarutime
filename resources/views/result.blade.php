@@ -23,7 +23,7 @@
     <div class=" has-text-centered">
         <img src="./make?words={{$words}}">
     </div>
-    <a href="http://twitter.com/share?url=https://maumarutime.ga/make?words={{base64_encode($words)}}&text=バジリスクタイムロゴジェネレーターで遊んだよ！&hashtags=バジリスクタイムロゴジェネレーター" target="_blank"><button class="button is-info is-medium is-fullwidth has-text-weight-bold" style="margin-bottom:1rem;">Twitterでシェアする</button></a>
+    <a href="http://twitter.com/share?url=https://maumarutime.ga/result?words={{base64_encode($words)}}&text=バジリスクタイムロゴジェネレーターで遊んだよ！&hashtags=バジリスクタイムロゴジェネレーター" target="_blank"><button class="button is-info is-medium is-fullwidth has-text-weight-bold" style="margin-bottom:1rem;">Twitterでシェアする</button></a>
     <a href="/"><button class="button is-info is-medium is-fullwidth has-text-weight-bold">トップに戻る</button></a>
 </article>
 @endsection
