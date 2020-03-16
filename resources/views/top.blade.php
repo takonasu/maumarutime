@@ -6,10 +6,10 @@
 
 <h1 class="title">バジリスクｗｗｗ<br>タイムｗｗ</h1>
 <p class="subtitle">バジリスクタイムのロゴが作れるよ！</p>
-<form action="./artist" method="get" style="margin-bottom:10px;">
+<form action="./result" method="get" style="margin-bottom:10px;">
     <div class="field">
         <div class="control">
-            <input class="input is-medium" name="name" type="text" placeholder="バジリスク">
+            <input class="input is-medium" name="words" type="text" placeholder="バジリスク">
         </div>
     </div>
     <div class="control">

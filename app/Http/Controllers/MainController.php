@@ -82,4 +82,16 @@ class MainController extends Controller
         // ゴミ掃除(2)
         imagedestroy($baseImg);
     }
+
+    public function result(Request $request){
+        $ext = $request -> words;
+        if($ext==null){
+            return redirect('/');
+        }
+        if(base64_decode($ext)){
+            return view('result')->with('words', base64_decode($ext));
+        }
+
+        return view('result')->with('words', $ext);
+    }
 }
