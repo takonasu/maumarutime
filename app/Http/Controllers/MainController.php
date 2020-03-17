@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 class MainController extends Controller
 {
@@ -93,5 +94,77 @@ class MainController extends Controller
         }
 
         return view('result')->with('words', $ext);
+    }
+
+    public function twitter(Request $request){
+        if($request -> words==null){
+            return redirect('/');
+        }
+
+        $twitter = new TwitterOAuth(
+            env('TWITTER_CLIENT_ID'),
+            env('TWITTER_CLIENT_SECRET')
+        );
+
+        $token = $twitter->oauth('oauth/request_token', array(
+            'oauth_callback' => env('TWITTER_CALLBACK_URL').'?words='.$request -> words
+        ));
+
+        session(array(
+            'oauth_token' => $token['oauth_token'],
+            'oauth_token_secret' => $token['oauth_token_secret'],
+        ));
+
+        $url = $twitter->url('oauth/authenticate', array(
+            'oauth_token' => $token['oauth_token']
+        ));
+
+        return redirect($url);
+    }
+
+    public function callback(Request $request){
+        if($request -> words==null){
+            return redirect('/');
+        }
+        # 参考：https://qiita.com/daiki_44/items/fe11d57e53647f4b59f4
+        $oauth_token = session('oauth_token');
+        $oauth_token_secret = session('oauth_token_secret');
+
+        # request_tokenが不正な値だった場合エラー
+        if ($request->has('oauth_token') && $oauth_token !== $request->oauth_token) {
+            return Redirect::to('/');
+        }
+
+        # request_tokenからaccess_tokenを取得
+        $twitter = new TwitterOAuth(
+            $oauth_token,
+            $oauth_token_secret
+        );
+        $token = $twitter->oauth('oauth/access_token', array(
+            'oauth_verifier' => $request->oauth_verifier,
+            'oauth_token' => $request->oauth_token,
+        ));
+
+        # access_tokenを用いればユーザー情報へアクセスできるため、それを用いてTwitterOAuthをinstance化
+        $twitter_user = new TwitterOAuth(
+            env('TWITTER_CLIENT_ID'),
+            env('TWITTER_CLIENT_SECRET'),
+            $token['oauth_token'],
+            $token['oauth_token_secret']
+        );
+        // 画像をアップロードして、そのメディアIDを変数に格納
+        $media1 = $twitter_user->upload('media/upload', ['media' => public_path('/make?words='.$request -> words)]);
+        // ツイートするためのパラメータをセット
+        $parameters = [
+            'status' => '#バジリスクタイムロゴジェネレーター を使ってみたよ！みんなも遊ぼう！！　https://maumarutime.ga/',
+            'media_ids' => implode(',', [
+                $media1->media_id_string,
+            ])
+        ];
+
+        // ツイートを実行
+        $result = $twitter_user->post('statuses/update', $parameters);
+
+        return "多分ツイートした";
     }
 }

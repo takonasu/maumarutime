@@ -19,6 +19,10 @@ Route::get('/make', 'MainController@makeImage');
 
 Route::get('/result', 'MainController@result');
 
+Route::get('/twitter', 'MainController@twitter');
+
+Route::get('/callback', 'MainController@callback');
+
 Route::get('/sass', function () {
     return view('sass');
 });
