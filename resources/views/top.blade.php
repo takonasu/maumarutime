@@ -5,9 +5,9 @@
 <meta name="description" content="○○タイム　ロゴメーカー">
 <meta property="og:site_name" content="○○タイム　ロゴメーカー">
 <meta property="og:type" content="summary_large_image">
-<meta property="og:url" content="https://maumarutime.ga/make?words=ばじりすく">
+<meta property="og:url" content="{{env('APP_URL')}}/make?words=ばじりすく">
 <meta property="og:title" content="バジリスクタイム　ロゴメーカー">
-<meta property="og:image" content="https://maumarutime.ga/make?words=ばじりすく">
+<meta property="og:image" content="{{env('APP_URL')}}/make?words=ばじりすく">
 <meta property="og:description" content="○○タイム　ロゴメーカー">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@takonasu_piano">

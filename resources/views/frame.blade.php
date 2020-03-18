@@ -62,7 +62,7 @@
     </main>
     <footer>
         <a href="https://twitter.com/share" class="twitter-share-button" data-size="large"
-            data-url="https://maumarutime.ga/" data-text="バジリスクタイムロゴジェネレーターで遊んだよ！"
+            data-url="{{env('APP_URL')}}" data-text="バジリスクタイムロゴジェネレーターで遊んだよ！"
             data-hashtags="バジリスクタイムロゴジェネレーター">Tweet</a>
         <script>
         ! function(d, s, id) {
@@ -76,7 +76,7 @@
             }
         }(document, 'script', 'twitter-wjs');
         </script>
-        <div class="line-it-button" data-lang="ja" data-type="share-d" data-url="https://maumarutime.ga/"
+        <div class="line-it-button" data-lang="ja" data-type="share-d" data-url="{{env('APP_URL')}}"
             style="display: none;"></div>
         <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async"
             defer="defer"></script>

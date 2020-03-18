@@ -153,18 +153,25 @@ class MainController extends Controller
             $token['oauth_token_secret']
         );
         // 画像をアップロードして、そのメディアIDを変数に格納
-        $media1 = $twitter_user->upload('media/upload', ['media' => public_path('/make?words='.$request -> words)]);
+        $url = env('APP_URL')."/make?words=".urlencode($request -> words);
+        $img = file_get_contents($url);
+        $img_name = date('YmdHis').strval(rand());;
+        //一時的に画像を保存
+        file_put_contents('./tmp/' . $img_name, $img);
+
+        $media1 = $twitter_user->upload('media/upload', ['media' => public_path('/tmp/' . $img_name, $img)]);
         // ツイートするためのパラメータをセット
         $parameters = [
-            'status' => '#バジリスクタイムロゴジェネレーター を使ってみたよ！みんなも遊ぼう！！　https://maumarutime.ga/',
+            'status' => '#バジリスクタイムロゴジェネレーター を使ってみたよ！みんなも遊ぼう！！　'.env('APP_URL'),
             'media_ids' => implode(',', [
                 $media1->media_id_string,
             ])
         ];
-
         // ツイートを実行
         $result = $twitter_user->post('statuses/update', $parameters);
+        // 画像消去
+        unlink('./tmp/' . $img_name);
 
-        return "多分ツイートした";
+        return view('tweetfinish');
     }
 }
