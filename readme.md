@@ -1,16 +1,22 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+## バジリスクタイムロゴジェネレーター
 
-## バジリスクタイムロゴジェネレーターについて
-
-○○タイムというロゴをバジリスクタイム風に作成します。
+○○タイムというロゴをバジリスクタイム風に作成します。  
+Dockerで環境構築をすることができます．  
 
 ## 使い方
-`composer install` `npm install` でライブラリインストール
-`php artisan serve` で起動
+### 初回の操作
+`/src/maumarutime/` 直下に存在する `.env.example` を参考に `.env` ファイルを作成して配置してください．  
+`docker-compose build` コマンドを実行後  
+`docker-compose up -d`   
+  
+権限で怒られた場合は以下を実行してみてください．  
+`docker-compose exec php chmod 755 -R /src/maumarutime`
 
-`mkdir ./public/tmp` 等のコマンドでpublic直下にtmpフォルダーが必要です。（Twitterでシェアする場合）   
-`tmp` の権限は適正設定してください。
-また、`storage`フォルダーの権限周りで怒られる場合は`chmod -R 777 storage` 等で適正権限を設定してください。
+### 初回後の操作
+起動  
+`docker-compose up -d`   
+終了  
+`docker-compose down` 
 
 ## 素材
 
