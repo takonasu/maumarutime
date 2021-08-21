@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('top');
 });
+
+Route::get('/make', 'App\Http\Controllers\MainController@makeImage');
+
+Route::get('/result', 'App\Http\Controllers\MainController@result');
+
+Route::get('/twitter', 'App\Http\Controllers\MainController@twitter');
+
+Route::get('/callback', 'App\Http\Controllers\MainController@callback');
