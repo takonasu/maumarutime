@@ -12,12 +12,12 @@ RUN apt-get update \
 # php設定ファイルの適用
 COPY php.ini /usr/local/etc/php/
 
-COPY --from=composer:1.10.15 /usr/bin/composer /usr/bin/composer
+COPY --from=composer:2.1.5 /usr/bin/composer /usr/bin/composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /composer
 ENV PATH $PATH:/composer/vendor/bin
 
-# npmのインストール
+# npmとnodejsのインストール
 # RUN apt-get install -y nodejs npm && npm install n -g && n stable && apt-get purge -y nodejs npm
 # laravelを新規でインストールできるコマンド
-# RUN composer global require "laravel/installer" 
+RUN composer global require "laravel/installer" 

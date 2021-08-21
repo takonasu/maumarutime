@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,17 +14,5 @@
 */
 
 Route::get('/', function () {
-    return view('top');
-});
-
-Route::get('/make', 'MainController@makeImage');
-
-Route::get('/result', 'MainController@result');
-
-Route::get('/twitter', 'MainController@twitter');
-
-Route::get('/callback', 'MainController@callback');
-
-Route::get('/sass', function () {
-    return view('sass');
+    return view('welcome');
 });
