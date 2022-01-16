@@ -76,6 +76,8 @@
         <h3>更新履歴</h3>
 
         <dl>
+            <dt>2022/01/17</dt>
+            <dd>ドメインの更新を忘れてドメインが消失しました！よってURLが変更されました！</dd>
             <dt>2020/03/17</dt>
             <dd>Laravelで作り直されました。が、画像生成のアルゴリズムは変わっていません。ソースコードが<a
                     href="https://github.com/takonasu/maumarutime">Githubに公開</a>されました。</dd>
