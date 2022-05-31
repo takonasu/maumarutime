@@ -4,11 +4,13 @@ import DrawCanvas from '../components/drawCanvas';
 type Props = {};
 
 const DrawField: React.FC<Props> = ({}) => {
-	const [text, setText] = useState('');
+	const [upperText, setUpperText] = useState('');
+	const [lowerText, setLowerText] = useState('');
 	return (
 		<div>
-			<input type="text" value={text} onChange={(event) => setText(event.target.value)} />
-			<DrawCanvas text={text} />
+			<input type="text" value={upperText} onChange={(event) => setUpperText(event.target.value)} />
+			<input type="text" value={lowerText} onChange={(event) => setLowerText(event.target.value)} />
+			<DrawCanvas upperText={upperText} lowerText={lowerText} />
 		</div>
 	);
 };
