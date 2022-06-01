@@ -45,7 +45,7 @@ const DrawField: React.FC<Props> = () => {
 					}}
 				/>
 			</Box>
-			<DrawCanvas upperText={upperText} lowerText={lowerText} borderSize={borderSize} />;
+			<DrawCanvas upperText={upperText} lowerText={lowerText} borderSize={borderSize} />
 		</div>
 	);
 };

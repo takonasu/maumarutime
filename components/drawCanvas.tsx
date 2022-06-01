@@ -66,7 +66,7 @@ const DrawCanvas: React.FC<Props> = ({ upperText, lowerText, borderSize }) => {
 			ctx.drawImage(lowerImage, 0, 200);
 			setPng(combinedCanvasElm.toDataURL());
 		};
-	}, [upperText, lowerText, borderSize]);
+	}, [upperImageSrc, lowerImageSrc, borderSize]);
 	return (
 		<div className={styles.card}>
 			{png && (
