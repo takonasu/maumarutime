@@ -1,24 +1,23 @@
 import React, { useEffect, useState, useMemo } from 'react';
-import { text } from 'stream/consumers';
 import styles from '../styles/DrawField.module.css';
 
 type Props = {
 	upperText: string;
 	lowerText: string;
+	borderSize: number;
 };
 
 const imageWidth = 1500;
 const imageHeight = 400;
 const fontSize = 200;
 
-const makeTextImage = (text: string): string | null => {
+const makeTextImage = (text: string, borderSize: number): string | null => {
 	if (typeof window !== 'object') {
 		return null;
 	}
 	const textSize = fontSize;
 	const width = imageWidth;
 	const height = imageHeight / 2;
-	const strolkeSize = 1.5;
 	const canvasElem = document.createElement('canvas');
 	canvasElem.width = width;
 	canvasElem.height = height;
@@ -35,7 +34,7 @@ const makeTextImage = (text: string): string | null => {
 	const grad = ctx.createLinearGradient(50, 80, 50, 120);
 	grad.addColorStop(1.0, '#E60AF9');
 	grad.addColorStop(0.0, '#550082');
-	ctx.lineWidth = strolkeSize;
+	ctx.lineWidth = borderSize;
 	ctx.strokeStyle = '#fdf979';
 	ctx.fillStyle = grad;
 	ctx.fillText(text, 0, height - 35);
@@ -43,10 +42,10 @@ const makeTextImage = (text: string): string | null => {
 	return canvasElem.toDataURL();
 };
 
-const DrawCanvas: React.FC<Props> = ({ upperText, lowerText }) => {
+const DrawCanvas: React.FC<Props> = ({ upperText, lowerText, borderSize }) => {
 	const [png, setPng] = useState<string | null>(null);
-	const upperImageSrc = useMemo(() => makeTextImage(upperText) ?? '', [upperText]);
-	const lowerImageSrc = useMemo(() => makeTextImage(lowerText) ?? '', [lowerText]);
+	const upperImageSrc = useMemo(() => makeTextImage(upperText, borderSize) ?? '', [upperText, borderSize]);
+	const lowerImageSrc = useMemo(() => makeTextImage(lowerText, borderSize) ?? '', [lowerText, borderSize]);
 
 	useEffect(() => {
 		const upperImage = new Image();
@@ -67,7 +66,7 @@ const DrawCanvas: React.FC<Props> = ({ upperText, lowerText }) => {
 			ctx.drawImage(lowerImage, 0, 200);
 			setPng(combinedCanvasElm.toDataURL());
 		};
-	}, [upperText, lowerText]);
+	}, [upperText, lowerText, borderSize]);
 	return (
 		<div className={styles.card}>
 			{png && (
