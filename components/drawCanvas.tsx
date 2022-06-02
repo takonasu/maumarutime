@@ -30,13 +30,16 @@ const makeTextImage = (text: string, borderSize: number): string | null => {
 	// ctx.fillStyle = 'rgba(' + [0, 0, 0, 0] + ')';
 	ctx.fillRect(0, 0, width, height);
 	ctx.font = `${textSize}px BasiliskFont`;
-
-	const grad = ctx.createLinearGradient(50, 80, 50, 120);
-	grad.addColorStop(1.0, '#E60AF9');
-	grad.addColorStop(0.0, '#550082');
 	ctx.lineWidth = borderSize;
 	ctx.strokeStyle = '#fdf979';
-	ctx.fillStyle = grad;
+
+	const testImage = new Image();
+	testImage.src = '/images/fontBackImage.png';
+
+	const pattern = ctx.createPattern(testImage, 'repeat');
+	if (pattern == null) return null;
+	ctx.fillStyle = pattern;
+
 	ctx.fillText(text, 0, height - 35);
 	ctx.strokeText(text, 0, height - 35);
 	return canvasElem.toDataURL();
