@@ -10,6 +10,8 @@ const DrawField: React.FC<Props> = () => {
 	const [upperText, setUpperText] = useState('ば');
 	const [lowerText, setLowerText] = useState('た');
 	const [borderSize, setBorderSize] = useState(1.5);
+	const [upperImagePosition, setUpperImagePosition] = useState(0);
+	const [lowerImagePosition, setLowerImagePosition] = useState(0);
 
 	return (
 		<div>
@@ -33,6 +35,7 @@ const DrawField: React.FC<Props> = () => {
 					value={lowerText}
 					onChange={(event) => setLowerText(event.target.value)}
 				/>
+				縁取りサイズ
 				<Slider
 					defaultValue={1.5}
 					step={0.1}
@@ -44,8 +47,38 @@ const DrawField: React.FC<Props> = () => {
 						if (typeof value === 'number') setBorderSize(value);
 					}}
 				/>
+				上
+				<Slider
+					defaultValue={0}
+					step={10}
+					min={0}
+					max={1000}
+					aria-label="Default"
+					valueLabelDisplay="auto"
+					onChange={(event, value) => {
+						if (typeof value === 'number') setUpperImagePosition(value);
+					}}
+				/>
+				下
+				<Slider
+					defaultValue={0}
+					step={10}
+					min={0}
+					max={1000}
+					aria-label="Default"
+					valueLabelDisplay="auto"
+					onChange={(event, value) => {
+						if (typeof value === 'number') setLowerImagePosition(value);
+					}}
+				/>
 			</Box>
-			<DrawCanvas upperText={upperText} lowerText={lowerText} borderSize={borderSize} />
+			<DrawCanvas
+				upperText={upperText}
+				lowerText={lowerText}
+				borderSize={borderSize}
+				upperImagePosition={upperImagePosition}
+				lowerImagePosition={lowerImagePosition}
+			/>
 		</div>
 	);
 };

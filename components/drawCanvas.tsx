@@ -5,6 +5,8 @@ type Props = {
 	upperText: string;
 	lowerText: string;
 	borderSize: number;
+	upperImagePosition: number;
+	lowerImagePosition: number;
 };
 
 const imageWidth = 1500;
@@ -45,7 +47,7 @@ const makeTextImage = (text: string, borderSize: number): string | null => {
 	return canvasElem.toDataURL();
 };
 
-const DrawCanvas: React.FC<Props> = ({ upperText, lowerText, borderSize }) => {
+const DrawCanvas: React.FC<Props> = ({ upperText, lowerText, borderSize, upperImagePosition, lowerImagePosition }) => {
 	const [png, setPng] = useState<string | null>(null);
 	const upperImageSrc = useMemo(() => makeTextImage(upperText, borderSize) ?? '', [upperText, borderSize]);
 	const lowerImageSrc = useMemo(() => makeTextImage(lowerText, borderSize) ?? '', [lowerText, borderSize]);
@@ -62,14 +64,14 @@ const DrawCanvas: React.FC<Props> = ({ upperText, lowerText, borderSize }) => {
 		combinedCanvasElm.width = imageWidth;
 		combinedCanvasElm.height = imageHeight;
 		upperImage.onload = () => {
-			ctx.drawImage(upperImage, 0, 0);
+			ctx.drawImage(upperImage, upperImagePosition, 0);
 			setPng(combinedCanvasElm.toDataURL());
 		};
 		lowerImage.onload = () => {
-			ctx.drawImage(lowerImage, 0, 200);
+			ctx.drawImage(lowerImage, lowerImagePosition, 200);
 			setPng(combinedCanvasElm.toDataURL());
 		};
-	}, [upperImageSrc, lowerImageSrc, borderSize]);
+	}, [upperImageSrc, lowerImageSrc, borderSize, upperImagePosition, lowerImagePosition]);
 	return (
 		<div className={styles.card}>
 			{png && (
